@@ -37,21 +37,18 @@ const Dashboard = () => {
     };
     //https://cors-anywhere.herokuapp.com/
     //for the cors origin
-
+    //put https://cors-anywhere.herokuapp.com/http://mesurit.com:8086/api/data/search/
     try {
-      const response = await fetch(
-        "https://cors-anywhere.herokuapp.com/http://mesurit.com:8086/api/data/search/",
-        {
-          method: "POST",
-          mode: "cors",
-          credentials: "same-origin",
-          headers: {
-            Authorization: `Basic ${btoa(`Guest:WaterFlow`)}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestBody),
-        }
-      );
+      const response = await fetch("http://mesurit.com:8086/api/data/search/", {
+        method: "POST",
+        mode: "cors",
+        credentials: "same-origin",
+        headers: {
+          Authorization: `Basic ${btoa(`Guest:WaterFlow`)}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
       const [result] = await response.json();
       //if you want to show result please uncomment  setChartData(result); and comment down hardcode
       // setChartData(result);
