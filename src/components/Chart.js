@@ -1,24 +1,10 @@
 import React from "react";
 import { CChartLine } from "@coreui/react-chartjs";
 import { getStyle, hexToRgba } from "@coreui/utils/src";
-
+import { useGraph } from "../hook/usePicker";
 const brandInfo = getStyle("info") || "#20a8d8";
-const initialState = { xAxis: [], yAxis: [] };
 const MainChart = ({ chartData }) => {
-  const [{ xAxis, yAxis }, setState] = React.useState(initialState);
-  React.useEffect(() => {
-    setState(
-      chartData.reduce(
-        (acc, [first, second]) => {
-          acc.xAxis.push(first);
-          acc.yAxis.push(second);
-          return acc;
-        },
-        { xAxis: [], yAxis: [] }
-      )
-    );
-  }, [chartData]);
-
+  const { xAxis, yAxis } = useGraph(chartData);
   const defaultDatasets = (() => {
     let elements = 27;
     const data = [];

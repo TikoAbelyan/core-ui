@@ -2,6 +2,8 @@ import React from "react";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
+import moment from "moment";
+
 import { CCard, CCardHeader, CCardBody, CBadge } from "@coreui/react";
 
 const DatePicker = ({ submitFilter, date }) => {
@@ -17,7 +19,7 @@ const DatePicker = ({ submitFilter, date }) => {
       focusedInput={focused}
       onFocusChange={(focusedInput) => setFocused(focusedInput)}
       orientation="horizontal"
-      openDirection="down"
+      isOutsideRange={() => false}
     />
   );
 };
